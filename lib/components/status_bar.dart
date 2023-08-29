@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 class StatusBar extends StatelessWidget {
-  const StatusBar({Key key}) : super(key: key);
+  const StatusBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -220,24 +220,6 @@ class StatusBarPainter extends CustomPainter {
               0.0,
               1.0
             ]));
-            var transform = Float64List.fromList([
-              (frame.width / 16.2346649170),
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              (frame.height / 7.3333334923),
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              1.0,
-              0.0,
-              0.0,
-              0.0,
-              0.0,
-              1.0
-            ]);
             var fillGeometry = [
               Path()
                 ..addRRect(RRect.fromRectAndRadius(
@@ -479,13 +461,13 @@ class _PathCatalog {
     this.path_3 = _build_3();
   }
 
-  Path path_0;
+  late Path path_0;
 
-  Path path_1;
+  late Path path_1;
 
-  Path path_2;
+  late Path path_2;
 
-  Path path_3;
+  late Path path_3;
 
   static final _PathCatalog instance = _PathCatalog();
 
@@ -728,15 +710,9 @@ class _PaintCatalog {
     this.paint_0 = (Paint()..color = _ColorCatalog.instance.color_0);
   }
 
-  Paint paint_0;
+  late Paint paint_0;
 
   static final _PaintCatalog instance = _PaintCatalog();
-}
-
-class _EffectCatalog {
-  _EffectCatalog() {}
-
-  static final _EffectCatalog instance = _EffectCatalog();
 }
 
 class _ColorCatalog {
@@ -746,11 +722,11 @@ class _ColorCatalog {
     this.color_2 = Color.fromARGB(0, 0, 0, 0);
   }
 
-  Color color_0;
+  late Color color_0;
 
-  Color color_1;
+  late Color color_1;
 
-  Color color_2;
+  late Color color_2;
 
   static final _ColorCatalog instance = _ColorCatalog();
 }
@@ -765,51 +741,7 @@ class _TextStyleCatalog {
     );
   }
 
-  ui.TextStyle ui_TextStyle_0;
+  late ui.TextStyle ui_TextStyle_0;
 
   static final _TextStyleCatalog instance = _TextStyleCatalog();
-}
-
-class Data {
-  Data({this.isVisible});
-
-  final bool isVisible;
-
-  @override
-  bool operator ==(o) => o is Data && isVisible == o.isVisible;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    return result;
-  }
-}
-
-class TextData extends Data {
-  TextData({isVisible, this.text}) : super(isVisible: isVisible);
-
-  final String text;
-
-  @override
-  bool operator ==(o) => o is TextData && isVisible == o.isVisible && text == o.text;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    result = 37 * result + (this.text?.hashCode ?? 0);
-    return result;
-  }
-}
-
-class VectorData extends Data {
-  VectorData({isVisible}) : super(isVisible: isVisible);
-
-  @override
-  bool operator ==(o) => o is VectorData && isVisible == o.isVisible;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    return result;
-  }
 }

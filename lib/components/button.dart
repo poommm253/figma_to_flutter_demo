@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
 class Button extends StatelessWidget {
-  Button({this.showIcon, this.title});
+  Button({required this.showIcon, required this.title});
 
   final bool showIcon;
   final String title;
@@ -18,7 +18,7 @@ class Button extends StatelessWidget {
 }
 
 class StatusDefaultPainter extends CustomPainter {
-  StatusDefaultPainter({this.showIcon, this.title});
+  StatusDefaultPainter({required this.showIcon, required this.title});
 
   final bool showIcon;
   final String title;
@@ -173,11 +173,11 @@ class _ColorCatalog {
     this.color_2 = Color.fromARGB(255, 255, 255, 255);
   }
 
-  Color color_0;
+  late Color color_0;
 
-  Color color_1;
+  late Color color_1;
 
-  Color color_2;
+  late Color color_2;
 
   static final _ColorCatalog instance = _ColorCatalog();
 }
@@ -198,9 +198,9 @@ class _TextStyleCatalog {
     );
   }
 
-  ui.TextStyle ui_TextStyle_0;
+  late ui.TextStyle ui_TextStyle_0;
 
-  ui.TextStyle ui_TextStyle_1;
+  late ui.TextStyle ui_TextStyle_1;
 
   static final _TextStyleCatalog instance = _TextStyleCatalog();
 }
