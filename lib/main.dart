@@ -1,4 +1,3 @@
-import 'package:figma_to_flutter_demo/components/status_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -47,7 +46,121 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const StatusBar(),
+            Container(
+              width: 393,
+              height: 44,
+              decoration: BoxDecoration(color: Colors.white),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    width: 393,
+                    height: 44,
+                    decoration: BoxDecoration(color: Color(0xFF0089D6)),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  '9:41',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontFamily: 'Roboto',
+                                    fontWeight: FontWeight.w700,
+                                    height: 1.33,
+                                    letterSpacing: -0.24,
+                                  ),
+                                ),
+                              ),
+                              Container(
+                                child: Row(
+                                  children: [
+                                    Container(
+                                      width: 10,
+                                      height: 11,
+                                      decoration: ShapeDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage("https://via.placeholder.com/16x11"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.white)),
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 25.50,
+                                      height: 11.33,
+                                      child: Stack(
+                                        children: [
+                                          Positioned(
+                                            left: 0,
+                                            top: 0,
+                                            child: Opacity(
+                                              opacity: 0.35,
+                                              child: Container(
+                                                width: 23.06,
+                                                height: 11.33,
+                                                decoration: ShapeDecoration(
+                                                  color: Colors.white,
+                                                  shape: RoundedRectangleBorder(
+                                                    side: BorderSide(width: 0.50, color: Colors.white),
+                                                    borderRadius: BorderRadius.circular(2.67),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          Positioned(
+                                            left: 2.10,
+                                            top: 2,
+                                            child: Container(
+                                              width: 18.86,
+                                              height: 7.33,
+                                              decoration: ShapeDecoration(
+                                                color: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                  side: BorderSide(color: Colors.white),
+                                                  borderRadius: BorderRadius.circular(1.33),
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      width: 17.82,
+                                      height: 10.67,
+                                      decoration: ShapeDecoration(
+                                        image: DecorationImage(
+                                          image: NetworkImage("https://via.placeholder.com/18x11"),
+                                          fit: BoxFit.fill,
+                                        ),
+                                        shape: RoundedRectangleBorder(side: BorderSide(color: Colors.white)),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const SizedBox(height: 20),
             Expanded(
               child: Container(
