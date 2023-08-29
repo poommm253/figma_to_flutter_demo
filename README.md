@@ -1,16 +1,19 @@
 # figma_to_flutter_demo
 
-Automatic Flutter code generation from FIgma designs.
+Automatic Flutter code generation from Figma designs.
 
-## Getting Started
+## Getting Started:
+- Flutter 3.13.1 channel stable
+- Dart SDK 3.1.0
 
-This project is a starting point for a Flutter application.
+## Option 1: Figma Component Generation
+The status bar and the button components are generated into their Flutter widget made with CustomPainter. The generated widgets are then used to create the final layout to match the Figma design. The result is on the `figma_to_flutter_generation` branch.
 
-A few resources to get you started if this is your first Flutter project:
+## Option 2: Figma to Code Plugin
+The entire screen is generated from the given Figma design into Flutter code. The result is on the `figma_plugin` branch.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Areas to Improve:
+The flutter_theme_generator does not support null safety and can no longer be run on Dart SDK version 3+. However, this may allow us to update the Flutter application's theme directly from Figma whenever there is a theme change in the design.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Other Options: Parabeac
+I looked into Parabeac Figma to Flutter code generation which allows for components, screen, and theme generation. Whenever there is an update to the Figma design file, you can use Parabeac to create a new pull request to your version control of choice. Thus, the Flutter application will automatically reflect the changes that were done on the Figma design.
