@@ -1,3 +1,4 @@
+import 'package:figma_to_flutter_demo/components/button.dart';
 import 'package:figma_to_flutter_demo/components/status_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -78,39 +79,14 @@ class _MyHomePageState extends State<MyHomePage> {
                           children: [
                             Container(
                               width: double.infinity,
-                              padding: const EdgeInsets.all(16),
-                              clipBehavior: Clip.antiAlias,
-                              decoration: ShapeDecoration(
-                                color: Color(0xFF0089D6),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(16),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Container(
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          'Add a ToDo',
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 18,
-                                            fontFamily: 'Roboto',
-                                            fontWeight: FontWeight.w500,
-                                            height: 1.11,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(16),
+                                child: Container(
+                                  child: Button(
+                                    showIcon: false,
+                                    title: 'Add a Todo',
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ],

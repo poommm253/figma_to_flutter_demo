@@ -2,20 +2,26 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'dart:ui' as ui;
 
-class StatusDefault extends StatelessWidget {
-  StatusDefault();
+class Button extends StatelessWidget {
+  Button({this.showIcon, this.title});
+
+  final bool showIcon;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: StatusDefaultPainter(),
+      painter: StatusDefaultPainter(showIcon: showIcon, title: title),
       size: Size(double.infinity, 52),
     );
   }
 }
 
 class StatusDefaultPainter extends CustomPainter {
-  StatusDefaultPainter();
+  StatusDefaultPainter({this.showIcon, this.title});
+
+  final bool showIcon;
+  final String title;
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -24,7 +30,7 @@ class StatusDefaultPainter extends CustomPainter {
     canvas.translate(-20.0000000000, -20.0000000000);
 
 // 2:38 : Status=Default (COMPONENT)
-    draw_2_38(Canvas canvas, Rect container) {
+    var draw_2_38 = (Canvas canvas, Rect container) {
       var frame = Rect.fromLTWH(
           20.0000000000,
           20.0000000000,
@@ -53,7 +59,7 @@ class StatusDefaultPainter extends CustomPainter {
       canvas.drawRect(Offset.zero & frame.size, (Paint()..color = _ColorCatalog.instance.color_0));
 
 // 2:39 : Frame 1 (FRAME)
-      draw_2_39(Canvas canvas, Rect container) {
+      var draw_2_39 = (Canvas canvas, Rect container) {
         var frame = Rect.fromLTWH(123.1666717529, 16.0000000000, 84.0000000000,
             20.0000000000) /* H:LEFT V:TOP F:(l:123.16667175292969,t:16,r:123.16667175292969,b:123.16667175292969,w:84,h:20) */;
         canvas.save();
@@ -78,9 +84,9 @@ class StatusDefaultPainter extends CustomPainter {
         canvas.drawRect(Offset.zero & frame.size, (Paint()..color = _ColorCatalog.instance.color_1));
 
 // 2:40 : circle-question (TEXT)
-        draw_2_40(Canvas canvas, Rect container) {
-          var frame = const Rect.fromLTWH(
-              0.0, 0.0, 32.0000000000, 20.0000000000) /* H:LEFT V:TOP F:(l:0,t:0,r:52,b:52,w:32,h:20) */;
+        var draw_2_40 = (Canvas canvas, Rect container) {
+          var frame =
+              Rect.fromLTWH(0.0, 0.0, 32.0000000000, 20.0000000000) /* H:LEFT V:TOP F:(l:0,t:0,r:52,b:52,w:32,h:20) */;
           canvas.save();
           canvas.transform(Float64List.fromList([
             1.0000000000,
@@ -108,62 +114,40 @@ class StatusDefaultPainter extends CustomPainter {
             fontWeight: FontWeight.w400,
           );
           var paragraphBuilder = ui.ParagraphBuilder(paragraphStyle)..pushStyle(style_0);
-          paragraphBuilder.addText("circle-question");
+          paragraphBuilder.addText("?");
           var paragraph = paragraphBuilder.build();
           paragraph.layout(new ui.ParagraphConstraints(width: frame.width));
           canvas.drawParagraph(paragraph, Offset.zero);
           canvas.restore();
-        }
+        };
+        if (showIcon) draw_2_40(canvas, frame);
 
-        draw_2_40(canvas, frame);
-
-// 2:41 : Label (TEXT)
-        draw_2_41(Canvas canvas, Rect container) {
-          var frame = const Rect.fromLTWH(
-              40.0000000000, 0.0, 44.0000000000, 20.0000000000) /* H:LEFT V:TOP F:(l:40,t:0,r:0,b:0,w:44,h:20) */;
-          canvas.save();
-          canvas.transform(Float64List.fromList([
-            1.0000000000,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            1.0000000000,
-            0.0,
-            0.0,
-            0.0,
-            0.0,
-            1.0,
-            0.0,
-            frame.left,
-            frame.top,
-            0.0,
-            1.0
-          ]));
-          var style_0 = _TextStyleCatalog.instance.ui_TextStyle_1;
-          var paragraphStyle = ui.ParagraphStyle(
-            fontFamily: 'Roboto',
-            textAlign: TextAlign.left,
-            fontSize: 18.0000000000,
-            fontWeight: FontWeight.w500,
-          );
-          var paragraphBuilder = ui.ParagraphBuilder(paragraphStyle)..pushStyle(style_0);
-          paragraphBuilder.addText("Add a Todo");
-          var paragraph = paragraphBuilder.build();
-          paragraph.layout(new ui.ParagraphConstraints(width: frame.width));
-          canvas.drawParagraph(paragraph, Offset.zero);
-          canvas.restore();
-        }
-
-        draw_2_41(canvas, frame);
-        canvas.restore();
-      }
-
+        // 2:41 : Label (TEXT)
+        final textStyle = TextStyle(
+          color: Colors.white,
+          fontSize: 18,
+          fontWeight: FontWeight.w500,
+          fontFamily: 'Roboto',
+        );
+        final textSpan = TextSpan(
+          text: title,
+          style: textStyle,
+        );
+        final textPainter = TextPainter(
+          text: textSpan,
+          textDirection: TextDirection.ltr,
+        );
+        textPainter.layout(
+          minWidth: 0,
+          maxWidth: size.width,
+        );
+        textPainter.paint(canvas, Offset(15, 0));
+      };
       draw_2_39(canvas, frame);
       canvas.restore();
-    }
-
+    };
     draw_2_38(canvas, frame);
+    canvas.restore();
   }
 
   @override
@@ -180,24 +164,6 @@ class StatusDefaultPainter extends CustomPainter {
   bool shouldRepaint(StatusDefaultPainter oldDelegate) {
     return false;
   }
-}
-
-class _PathCatalog {
-  _PathCatalog() {}
-
-  static final _PathCatalog instance = _PathCatalog();
-}
-
-class _PaintCatalog {
-  _PaintCatalog() {}
-
-  static final _PaintCatalog instance = _PaintCatalog();
-}
-
-class _EffectCatalog {
-  _EffectCatalog() {}
-
-  static final _EffectCatalog instance = _EffectCatalog();
 }
 
 class _ColorCatalog {
@@ -237,48 +203,4 @@ class _TextStyleCatalog {
   ui.TextStyle ui_TextStyle_1;
 
   static final _TextStyleCatalog instance = _TextStyleCatalog();
-}
-
-class Data {
-  Data({this.isVisible});
-
-  final bool isVisible;
-
-  @override
-  bool operator ==(o) => o is Data && isVisible == o.isVisible;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    return result;
-  }
-}
-
-class TextData extends Data {
-  TextData({isVisible, this.text}) : super(isVisible: isVisible);
-
-  final String text;
-
-  @override
-  bool operator ==(o) => o is TextData && isVisible == o.isVisible && text == o.text;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    result = 37 * result + (this.text?.hashCode ?? 0);
-    return result;
-  }
-}
-
-class VectorData extends Data {
-  VectorData({isVisible}) : super(isVisible: isVisible);
-
-  @override
-  bool operator ==(o) => o is VectorData && isVisible == o.isVisible;
-  @override
-  int get hashcode {
-    int result = 17;
-    result = 37 * result + (this.isVisible?.hashCode ?? 0);
-    return result;
-  }
 }
